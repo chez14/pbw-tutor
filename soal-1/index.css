@@ -1,0 +1,17 @@
+a:link, a:visited, a:hover, a:active {
+    color: #0c5DA5;
+    text-decoration: none;
+}
+th {
+    background: #AAAAAA;
+}
+tr {
+    background: #EEEEEE;
+}
+@font-face {
+    font-family: gnut;
+    src: url(gtw.otf);
+}
+body {
+    font-family: gnut;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Warna Favorit</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="namaInput"></td>
+            <td><input type="date" id="tanggalLahirInput"></td>
+            <td><input type="color" id="colorInput"></td>
+            <td><a href="#" id="tambahButton">Tambah</a></td>
+        </tr>
+        <tr>
+            <td>Joko</td>
+            <td>
+                <time>1945-08-17</time>
+            </td>
+            <td style="color:#000000">#000000</td>
+            <td><a href="#" class="hapus">hapus</a></td>
+        </tr>
+        <tr>
+            <td>Ah Beng</td>
+            <td>
+                <time>1945-08-09</time>
+            </td>
+            <td style="color:#FFFFFF">#FFFFFF</td>
+            <td><a href="#" class="hapus">hapus</a></td>
+        </tr>
+        <tr>
+            <td>Vijay</td>
+            <td>
+                <time>1945-08-15</time>
+            </td>
+            <td style="color:#FF0000">#FF0000</td>
+            <td><a href="#" class="hapus">hapus</a></td>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function() {
+            var currentId=0;
+            $("#tambahButton").click(function(){
+                var namaInput = $("#namaInput").val();
+                var tanggalLahirInput = $("#tanggalLahirInput").val();
+                var colorInput = $("#colorInput").val();
+                var table = $("table");
+
+                var item = "<tr id=\"item-"+ currentId + "\" style=\"display:none;\"><td>" + namaInput + "</td><td><time>" + tanggalLahirInput + "</time></td><td style=\"color: " + colorInput + " \">" + colorInput + "</td><td><a href=\"#\" class=\"hapus\">hapus</a></td></tr>";
+
+                table.append(item);
+                $("#item-"+currentId).fadeIn();
+                currentId++;
+            });
+
+            $("table").on("click", ".hapus", function(e){
+                var parent = $(this).parents("tr");
+                parent.fadeOut("1000", function(){
+                    parent.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -49,18 +49,25 @@
     </table>
     <script>
         $(document).ready(function() {
-            var currentId=0;
+            //var currentId=0;
             $("#tambahButton").click(function(){
                 var namaInput = $("#namaInput").val();
                 var tanggalLahirInput = $("#tanggalLahirInput").val();
                 var colorInput = $("#colorInput").val();
                 var table = $("table");
 
-                var item = "<tr id=\"item-"+ currentId + "\" style=\"display:none;\"><td>" + namaInput + "</td><td><time>" + tanggalLahirInput + "</time></td><td style=\"color: " + colorInput + " \">" + colorInput + "</td><td><a href=\"#\" class=\"hapus\">hapus</a></td></tr>";
+                //var item = "<tr id=\"item-"+ currentId + "\" style=\"display:none;\"><td>" + namaInput + "</td><td><time>" + tanggalLahirInput + "</time></td><td style=\"color: " + colorInput + " \">" + colorInput + "</td><td><a href=\"#\" class=\"hapus\">hapus</a></td></tr>";
+                
+                var item = $("<tr/>", {css:{display:'none'}});
+                item.append($("<td/>", {text:namaInput}));
+                item.append($("<td/>").append($("<time/>", {text:tanggalLahirInput})));
+                item.append($("<td/>", {css:{color:colorInput}, text:colorInput}));
+                item.append($("<td/>").append($("<a/>", {class:"hapus", text:"hapus"})));
 
                 table.append(item);
-                $("#item-"+currentId).fadeIn();
-                currentId++;
+                item.fadeIn();
+                //$("#item-"+currentId).fadeIn();
+                //currentId++;
             });
 
             $("table").on("click", ".hapus", function(e){

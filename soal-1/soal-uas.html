@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gambar"></canvas>
+    <script>
+    $(document).ready(function() {
+        $("#gambar").attr("height", window.innerHeight-30);
+        $("#gambar").attr("width", window.innerWidth-30);
+        $(window).resize(function(){
+            $("#gambar").attr("height", window.innerHeight-30);
+            $("#gambar").attr("width", window.innerWidth-30);
+        });
+
+        $("body").keydown(function(e){
+            var konteks = $("#gambar").get(0).getContext("2d");
+            if(e.keyCode == 38) {
+                // tombol atas
+                // gambar kotak
+                console.log("isi");
+                var size = (Math.abs(Math.random()) * 20 )+ 10
+
+                var top = Math.abs(Math.random()) * window.innerHeight;
+                var left = Math.abs(Math.random()) * window.innerWidth;
+                konteks.fillRect(left,top,size, size);
+            } else if (e.keyCode == 40){
+                //tombol bawah
+                // gambar lingkaran.
+                var radius = (Math.abs(Math.random()) * 20 )+ 10
+
+                var top = Math.abs(Math.random()) * window.innerHeight;
+                var left = Math.abs(Math.random()) * window.innerWidth;
+                console.log(top, left, radius);
+                konteks.beginPath();
+                konteks.arc(top, left,radius,0,2*Math.PI);
+                konteks.fill();
+
+            }
+        });
+    })
+    </script>
+</body>
+</html>
